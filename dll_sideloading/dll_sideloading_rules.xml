@@ -1,0 +1,40 @@
+<group name="sysmon,">
+
+<!-- Tous les chargements de DLL -->
+
+  <rule id="100100" level="3">
+    <if_group>sysmon_event7</if_group>
+    <description>
+      Sysmon: chargement d'une DLL detecte
+    </description>
+  </rule>
+
+  <!-- DLL non signee -->
+
+  <rule id="100101" level="8">
+    <if_group>sysmon_event7</if_group>
+    <field name="win.eventdata.signed">false</field>
+    <description>
+      Sysmon: DLL non signee chargee dans un processus
+    </description>
+    <mitre>
+      <id>T1574.001</id>
+    </mitre>
+  </rule>
+
+  <!-- DLL non signee hors des repertoires systeme -->
+
+  <rule id="100102" level="12">
+    <if_group>sysmon_event7</if_group>
+    <field name="win.eventdata.signed">false</field>
+    <field name="win.eventdata.imageLoaded"
+           negate="yes">(?i)C:\\Windows\\</field>
+    <description>
+      Sysmon: DLL non signee chargee hors des repertoires systeme
+    </description>
+    <mitre>
+      <id>T1574.001</id>
+    </mitre>
+  </rule>
+
+</group>
