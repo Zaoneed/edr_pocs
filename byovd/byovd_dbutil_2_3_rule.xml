@@ -1,0 +1,10 @@
+<group name="sysmon,">
+  <rule id="100202" level="15">
+    <if_group>sysmon_event6</if_group>
+    <match>0296E2CE999E67C76352613A718E11516FE1B0EFC3FFDB8918FC999DD76A73A5</match>
+    <description>BYOVD CRITIQUE : version vulnerable de dbutil_2_3.sys confirmee par hash SHA256 (CVE-2021-21551)</description>
+    <mitre>
+      <id>T1068</id>
+    </mitre>
+  </rule>
+</group>
